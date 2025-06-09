@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Thunderhead - Play this Horror Game Online | zhandui.uk</title>
-    <meta name="description" content="Play Thunderhead online! A milk-delivery western horror game. Uncover the mystery of an empty town in this retro PSX-style adventure.">
-    <link rel="canonical" href="https://zhandui.uk/thunderhead">
+    <title>2048 Game - Play Online | zhandui.uk</title>
+    <meta name="description" content="Play the classic 2048 puzzle game online. Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one!">
+    <link rel="canonical" href="https://zhandui.uk/2048-game">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -22,8 +22,19 @@
         h1, h2 {
             font-family: 'Press Start 2P', cursive;
         }
-        /* Custom styles for the game container */
+        /* Custom styles for the game iframe to make it responsive */
+        .game-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 100%; /* 1:1 Aspect Ratio, good for 2048 */
+        }
         .game-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border: 5px solid #374151; /* border-gray-700 */
             border-radius: 0.5rem; /* rounded-lg */
         }
@@ -31,33 +42,32 @@
 </head>
 <body class="bg-gray-800 text-gray-300">
 
-    <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <div class="container mx-auto px-4 py-8 max-w-xl">
 
         <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl text-amber-400 mb-2">Thunderhead</h1>
-            <p class="text-lg text-gray-400">A milk-delivery western horror game.</p>
+            <h1 class="text-4xl md:text-5xl text-amber-400 mb-2">2048</h1>
+            <p class="text-lg text-gray-400">The classic number-sliding puzzle game.</p>
         </header>
 
         <main>
             <section id="play-game" class="mb-12">
-                <div class="game-container w-full max-w-xl mx-auto bg-gray-900 rounded-lg shadow-lg">
-                    <iframe frameborder="0" src="https://itch.io/embed/362459" width="552" height="167"><a href="https://picogram.itch.io/goodbye-doggy">goodbye, doggy by Picogram</a></iframe>
+                <div class="game-container bg-gray-900 rounded-lg shadow-lg">
+                    <iframe src="https://gabrielecirulli.github.io/2048/" frameborder="0" scrolling="no"></iframe>
                 </div>
-                <p class="text-center text-sm text-gray-500 mt-2">Note: The default iframe size is small. You can adjust the width and height values above.</p>
             </section>
 
             <section id="about" class="bg-gray-900 p-6 rounded-lg shadow-inner mb-12">
-                <h2 class="text-3xl text-amber-400 mb-4">About the Game</h2>
+                <h2 class="text-3xl text-amber-400 mb-4">How to Play</h2>
                 <div class="space-y-4 text-lg">
-                    <p>Welcome to the town of Thunderhead. Your job is to deliver milk and orange juice, driving through the desolate streets and fixing your temperamental van. But where has everyone gone?</p>
-                    <p>This game features a unique blend of driving simulation and western horror. With retro PSX-style graphics and immersive sound design, you must uncover the unsettling mystery of what happened in this empty town before the epic, cinematic finale.</p>
+                    <p>Use your **arrow keys** (or swipe on a touch screen) to move the tiles. All tiles will slide as far as they can in the direction you choose.</p>
+                    <p>When two tiles with the **same number** touch, they **merge into one!** A new tile will appear in a random empty spot after each move. The goal is to create a tile with the number 2048.</p>
                 </div>
             </section>
             
             <section id="reviews">
-                 <h2 class="text-3xl text-center text-amber-400 mb-6">Player Reviews</h2>
+                 <h2 class="text-3xl text-center text-amber-400 mb-6">Leave a Comment</h2>
                  <div class="bg-gray-900 p-5 rounded-lg shadow-inner text-center">
-                    <p class="text-lg italic">Be the first to leave a review for Thunderhead!</p>
+                    <p class="text-lg italic">Share your highest score in the comments below!</p>
                  </div>
             </section>
 
@@ -65,7 +75,7 @@
 
         <footer class="text-center mt-12 pt-6 border-t border-gray-700">
             <p class="text-gray-500">&copy; 2025 zhandui.uk. All rights reserved.</p>
-            <p class="text-gray-600 text-sm mt-1">Game "Thunderhead" developed by Roawr Video Store.</p>
+            <p class="text-gray-600 text-sm mt-1">"2048" game created by Gabriele Cirulli.</p>
         </footer>
 
     </div>
