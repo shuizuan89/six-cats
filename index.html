@@ -1,120 +1,115 @@
-https://github.com/shuizuan89/six-cats<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Six Cats Under - Play this Cozy Puzzle Game Online | ZhanDui UK</title>
-    <meta name="description" content="Fit all the cats in the box in Six Cats Under, a charming and relaxing puzzle game. Play for free in your browser on ZhanDui UK and see if you can solve all the feline-filled levels!">
-    <link rel="canonical" href="https://zhandui.uk/">
+    
+    <title>Six Cats Under - Play this Puzzle Game Online | zhandui.uk</title>
+    <meta name="description" content="Play Six Cats Under online! A charming and challenging puzzle game where you arrange cute, chunky cats to fit perfectly. Can you solve all the levels?">
+    <link rel="canonical" href="https://zhandui.uk/six-cats-under">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // Apple-like Palette
-                        'apple-dark': '#1d1d1f',
-                        'apple-light': '#f5f5f7',
-                        'apple-text-dark': '#1d1d1f',
-                        'apple-text-light': '#f5f5f7',
-                        'apple-text-secondary': '#6e6e73',
-                        'apple-text-secondary-dark': '#86868b',
-                        'apple-blue': '#007aff',
-                        'apple-blue-hover': '#0062cc',
-                    }
-                }
-            },
-            // Enable dark mode based on class
-            darkMode: 'class',
-        }
-    </script>
-    
-    <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
     <style>
-        /* A little extra style for a smoother experience */
+        /* Using VT323 for body text and Press Start 2P for headers for that classic game feel */
         body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'VT323', monospace;
+            background-color: #1f2937; /* bg-gray-800 */
+        }
+        h1, h2 {
+            font-family: 'Press Start 2P', cursive;
+        }
+        /* Custom styles for the game container to ensure it looks good */
+        .game-container::before {
+            content: '';
+            display: block;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        .game-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 5px solid #374151; /* border-gray-700 */
+            border-radius: 0.5rem; /* rounded-lg */
         }
     </style>
-
 </head>
-<body class="bg-apple-light dark:bg-apple-dark transition-colors duration-300">
+<body class="bg-gray-800 text-gray-300">
 
-    <div class="max-w-4xl mx-auto px-6 py-12 md:py-20">
-        
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-apple-text-dark dark:text-apple-text-light">
-                Six Cats Under
-            </h1>
-            <p class="mt-4 text-lg md:text-xl text-apple-text-secondary dark:text-apple-text-secondary-dark">
-                A charming and cozy puzzle game about fitting finicky felines into a box.
-            </p>
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl text-amber-400 mb-2">Six Cats Under</h1>
+            <p class="text-lg text-gray-400">A cozy and clever cat-packing puzzle game.</p>
         </header>
 
         <main>
-<iframe frameborder="0" src="https://itch.io/embed/1739023?border_width=5&amp;bg_color=19182c&amp;fg_color=ece7d3&amp;link_color=faf7e8&amp;border_color=33314b" width="560" height="175"><a href="https://teambeanloop.itch.io/six-cats-under">Six Cats Under by Team Beanloop</a></iframe>
-            <section class="mb-16">
-                <h2 class="text-3xl font-bold text-apple-text-dark dark:text-apple-text-light mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">About The Game</h2>
-                <div class="prose prose-lg dark:prose-invert max-w-none text-apple-text-secondary dark:text-apple-text-secondary-dark space-y-4">
-                    <p>
-                        <strong>Six Cats Under</strong> is a delightful puzzle game crafted with love for the Cozy Spring Jam 2024. Your mission, should you choose to accept it, is to carefully arrange a quirky group of cats, each with their own unique shape, into a designated space. 
-                    </p>
-                    <p>
-                        It's a game of spatial reasoning that's both relaxing and challenging. With its adorable, low-poly art style and soothing atmosphere, it’s the perfect game to unwind with after a long day. Can you find the perfect spot for every single cat?
-                    </p>
+            <section id="play-game" class="mb-12">
+                <div class="relative w-full bg-gray-900 rounded-lg shadow-lg">
+                    <iframe frameborder="0" src="https://itch.io/embed/1739023?border_width=0&amp;bg_color=1f2937&amp;fg_color=d1d5db&amp;link_color=fbbf24&amp;border_color=1f2937" allowfullscreen=""></iframe>
                 </div>
             </section>
 
-            <section>
-                <h2 class="text-3xl font-bold text-apple-text-dark dark:text-apple-text-light mb-8 border-b border-gray-200 dark:border-gray-700 pb-2">What Players Are Saying</h2>
-                <div class="space-y-8">
-                    
-                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl shadow-lg">
-                        <blockquote class="text-apple-text-dark dark:text-apple-text-light">
-                            <p class="mb-4 italic">"I'm in love with this game! The presentation is fantastic and the core mechanic is so satisfying. The difficulty curve is also spot on. Amazing work!"</p>
-                        </blockquote>
-                        <footer class="text-right text-apple-text-secondary dark:text-apple-text-secondary-dark">
-                            — <cite>Kultisti</cite>, via itch.io
-                        </footer>
-                    </div>
-
-                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl shadow-lg">
-                        <blockquote class="text-apple-text-dark dark:text-apple-text-light">
-                            <p class="mb-4 italic">"This is SO cute and such a clever concept! I love all the different cat shapes and their funny little names. The UI is clean and the music is perfectly cozy."</p>
-                        </blockquote>
-                        <footer class="text-right text-apple-text-secondary dark:text-apple-text-secondary-dark">
-                            — <cite>starry-eyed-princess</cite>, via itch.io
-                        </footer>
-                    </div>
-
-                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl shadow-lg">
-                        <blockquote class="text-apple-text-dark dark:text-apple-text-light">
-                            <p class="mb-4 italic">"What a polished and charming game! It feels complete and incredibly well-made. The level of detail is just wonderful. 10/10 cozy puzzle."</p>
-                        </blockquote>
-                        <footer class="text-right text-apple-text-secondary dark:text-apple-text-secondary-dark">
-                            — <cite>sodaraptor</cite>, via itch.io
-                        </footer>
-                    </div>
-
+            <section id="about" class="bg-gray-900 p-6 rounded-lg shadow-inner mb-12">
+                <h2 class="text-3xl text-amber-400 mb-4">About the Game</h2>
+                <div class="space-y-4 text-lg">
+                    <p>Welcome to "Six Cats Under"! This is a charming puzzle game where your goal is to perfectly arrange an assortment of unique and chunky cats to fit within a designated space. It might sound simple, but each cat has its own shape and personality!</p>
+                    <p>Inspired by games like "A Little to the Left" and "Unpacking," this game offers a relaxing yet challenging experience. Rotate the cats, find the perfect spot for each one, and enjoy the satisfaction of a perfect fit. It's the ultimate test of your spatial reasoning and cat-herding skills!</p>
                 </div>
             </section>
+
+            <section id="reviews" class="mb-12">
+                <h2 class="text-3xl text-center text-amber-400 mb-6">What Players Are Saying</h2>
+                <div class="space-y-6">
+                    <article class="bg-gray-900 p-5 rounded-lg shadow-inner">
+                        <blockquote class="border-l-4 border-amber-400 pl-4">
+                            <p class="text-lg italic">"So cute and very polished! The art style is adorable and the puzzles are just right. I love that you can see all the cat shapes from the start. Amazing work!"</p>
+                            <footer class="text-right mt-2 text-amber-500 font-bold">- Jupiter Hadley</footer>
+                        </blockquote>
+                    </article>
+                    <article class="bg-gray-900 p-5 rounded-lg shadow-inner">
+                        <blockquote class="border-l-4 border-amber-400 pl-4">
+                            <p class="text-lg italic">"This is my favorite so far from the game jam. The cat designs are just fantastic. So simple, so fun, and so, so cute. 10/10 would pet them all."</p>
+                            <footer class="text-right mt-2 text-amber-500 font-bold">- Mister Blinky</footer>
+                        </blockquote>
+                    </article>
+                    <article class="bg-gray-900 p-5 rounded-lg shadow-inner">
+                        <blockquote class="border-l-4 border-amber-400 pl-4">
+                            <p class="text-lg italic">"Incredibly charming and fun! The puzzles ramp up nicely and the whole presentation is top-notch. The cats wiggling their tails is a fantastic touch. Great job!"</p>
+                            <footer class="text-right mt-2 text-amber-500 font-bold">- mauro</footer>
+                        </blockquote>
+                    </article>
+                </div>
+            </section>
+
+            <section id="comment-form">
+                <h2 class="text-3xl text-center text-amber-400 mb-6">Leave Your Own Review</h2>
+                <form class="bg-gray-900 p-6 rounded-lg shadow-inner max-w-lg mx-auto">
+                    <div class="mb-4">
+                        <label for="name" class="block mb-2 text-lg">Your Name:</label>
+                        <input type="text" id="name" name="name" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-amber-400 text-white">
+                    </div>
+                    <div class="mb-4">
+                        <label for="comment" class="block mb-2 text-lg">Your Comment:</label>
+                        <textarea id="comment" name="comment" rows="4" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-amber-400 text-white"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-amber-500 text-gray-900 font-bold py-2 px-6 rounded hover:bg-amber-400 transition-colors duration-300 text-lg">Submit Review</button>
+                    </div>
+                </form>
+            </section>
+
         </main>
-        
-        <footer class="text-center mt-20 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p class="text-sm text-apple-text-secondary dark:text-apple-text-secondary-dark">
-                &copy; 2025 zhandui.uk | Game "Six Cats Under" developed by <a href="https://teambeanloop.itch.io/" target="_blank" rel="noopener noreferrer" class="text-apple-blue hover:text-apple-blue-hover underline">Team Beanloop</a>.
-            </p>
+
+        <footer class="text-center mt-12 pt-6 border-t border-gray-700">
+            <p class="text-gray-500">&copy; 2025 zhandui.uk. All rights reserved.</p>
+            <p class="text-gray-600 text-sm mt-1">Game "Six Cats Under" developed by Team Beanloop.</p>
         </footer>
 
     </div>
