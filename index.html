@@ -3,44 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classic Snake Game - Play Online | zhandui.uk</title>
-    <meta name="description" content="Play the classic Snake game online. Use your arrow keys to control the snake and eat the apples. Don't hit the walls or your own tail!">
-    <link rel="canonical" href="https://zhandui.uk/snake-game">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <title>贪食蛇游戏 - Six Cats</title>
     <style>
-        body { font-family: 'VT323', monospace; background-color: #1f2937; }
-        h1, h2 { font-family: 'Press Start 2P', cursive; }
-        .game-container { position: relative; overflow: hidden; width: 100%; padding-top: 100%; }
-        .game-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid #374151; border-radius: 0.5rem; }
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #282c34; /* 深色背景 */
+            color: #f0f0f0; /* 浅色文字 */
+            overflow: hidden; /* 防止滚动条 */
+        }
+
+        h1 {
+            color: #61dafb; /* 突出颜色 */
+            margin-bottom: 20px;
+        }
+
+        #gameCanvas {
+            background-color: #383c4a; /* 游戏区域背景 */
+            border: 5px solid #61dafb;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #score {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #a0a0a0;
+        }
+
+        #instructions {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #808080;
+        }
+
+        #startScreen, #gameOverScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            z-index: 100;
+        }
+
+        #gameOverScreen button, #startScreen button {
+            padding: 15px 30px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #61dafb;
+            color: #282c34;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        #gameOverScreen button:hover, #startScreen button:hover {
+            background-color: #a2e8ff;
+        }
     </style>
 </head>
-<body class="bg-gray-800 text-gray-300">
-    <div class="container mx-auto px-4 py-8 max-w-xl">
-        <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl text-amber-400 mb-2">SNAKE</h1>
-            <p class="text-lg text-gray-400">The timeless arcade classic.</p>
-        </header>
-        <main>
-            <section id="play-game" class="mb-12">
-                <div class="game-container bg-gray-900 rounded-lg shadow-lg">
-                    <iframe src="https://chrislrogers.github.io/snake-game/" frameborder="0" scrolling="no"></iframe>
-                </div>
-            </section>
-            <section id="about" class="bg-gray-900 p-6 rounded-lg shadow-inner mb-12">
-                <h2 class="text-3xl text-amber-400 mb-4">How to Play</h2>
-                <div class="space-y-4 text-lg">
-                    <p>Use the **arrow keys** on your keyboard to control the direction of the snake.</p>
-                    <p>Your goal is to eat the red apples that appear on the screen. Each apple you eat makes the snake longer. Be careful not to run into the walls or the snake's own tail!</p>
-                </div>
-            </section>
-        </main>
-        <footer class="text-center mt-12 pt-6 border-t border-gray-700">
-            <p class="text-gray-500">&copy; 2025 zhandui.uk. All rights reserved.</p>
-            <p class="text-gray-600 text-sm mt-1">"Snake Game" by Chris Rogers.</p>
-        </footer>
+<body>
+    <h1>经典贪食蛇</h1>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="score">得分: 0</div>
+    <div id="instructions">使用方向键 (↑ ↓ ← →) 控制蛇的移动</div>
+
+    <div id="startScreen">
+        <h2>点击开始游戏</h2>
+        <button id="startButton">开始游戏</button>
+        <div id="instructions" style="font-size: 0.7em; margin-top: 15px;">使用方向键 (↑ ↓ ← →) 控制蛇的移动</div>
     </div>
+
+    <div id="gameOverScreen" style="display: none;">
+        <h2>游戏结束!</h2>
+        <p>你的得分: <span id="finalScore">0</span></p>
+        <button id="restartButton">重新开始</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('score');
+        const startScreen = document.getElementById('startScreen');
+        const startButton = document.getElementById('startButton');
+        const gameOverScreen = document.getElementById('gameOverScreen');
+        const finalScoreDisplay = document.getElementById('finalScore');
+        const restartButton = document.getElementById('restartButton');
+
+        const gridSize = 20; // 每个方块的大小
+        const canvasSize = 400; // 画布大小，必须是gridSize的倍数
+        let snake;
+        let food;
+        let dx, dy; // 蛇的移动方向
+        let score;
+        let gameInterval;
+        let gameSpeed = 150; // 游戏速度，毫秒
+
+        function initGame() {
+            snake = [{ x: 10 * gridSize, y: 10 * gridSize }]; // 蛇的初始位置 (头部)
+            food = {};
+            dx = gridSize; // 初始向右移动
+            dy = 0;
+            score = 0;
+            scoreDisplay.textContent = `得分: ${score}`;
+            gameOverScreen.style.display = 'none';
+            startScreen.style.display = 'none';
+            generateFood();
+            startGameLoop();
+        }
+
+        function startGameLoop() {
+            clearInterval(gameInterval); // 清除旧的计时器
+            gameInterval = setInterval(gameTick, gameSpeed);
+        }
+
+        function gameTick() {
+            clearCanvas();
+            drawFood();
+            moveSnake();
+            drawSnake();
+
+            // 检查游戏结束条件
+            if (checkCollision()) {
+                endGame();
+                return;
+            }
+
+            // 检查是否吃到食物
+            if (snake[0].x === food.x && snake[0].y === food.y) {
+                score++;
+                scoreDisplay.textContent = `得分: ${score}`;
+                generateFood();
+            } else {
+                // 如果没有吃到食物，移除蛇尾
+                snake.pop();
+            }
+        }
+
+        function clearCanvas() {
+            ctx.fillStyle = '#383c4a'; // 和canvas背景色一致
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawSnakePart(snakePart) {
+            ctx.fillStyle = '#4CAF50'; // 蛇的颜色
+            ctx.strokeStyle = '#388E3C'; // 蛇的边框颜色
+            ctx.fillRect(snakePart.x, snakePart.y, gridSize, gridSize);
+            ctx.strokeRect(snakePart.x, snakePart.y, gridSize, gridSize);
+        }
+
+        function drawSnake() {
+            snake.forEach(drawSnakePart);
+        }
+
+        function moveSnake() {
+            // 计算新头部的位置
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+            // 将新头部添加到蛇的数组最前面
+            snake.unshift(head);
+        }
+
+        function generateFood() {
+            let newFoodX, newFoodY;
+            let collisionWithSnake;
+            do {
+                newFoodX = Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize;
+                newFoodY = Math.floor(Math.random() * (canvasSize / gridSize)) * gridSize;
+                collisionWithSnake = snake.some(part => part.x === newFoodX && part.y === newFoodY);
+            } while (collisionWithSnake); // 确保食物不生成在蛇的身体上
+
+            food = { x: newFoodX, y: newFoodY };
+        }
+
+        function drawFood() {
+            ctx.fillStyle = '#FFC107'; // 食物的颜色
+            ctx.strokeStyle = '#FFA000'; // 食物的边框颜色
+            ctx.fillRect(food.x, food.y, gridSize, gridSize);
+            ctx.strokeRect(food.x, food.y, gridSize, gridSize);
+        }
+
+        function checkCollision() {
+            // 撞墙
+            const hitLeftWall = snake[0].x < 0;
+            const hitRightWall = snake[0].x >= canvasSize;
+            const hitTopWall = snake[0].y < 0;
+            const hitBottomWall = snake[0].y >= canvasSize;
+            if (hitLeftWall || hitRightWall || hitTopWall || hitBottomWall) {
+                return true;
+            }
+
+            // 撞到自己
+            for (let i = 1; i < snake.length; i++) {
+                if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function endGame() {
+            clearInterval(gameInterval);
+            finalScoreDisplay.textContent = score;
+            gameOverScreen.style.display = 'flex'; // 显示游戏结束界面
+        }
+
+        document.addEventListener('keydown', changeDirection);
+
+        function changeDirection(event) {
+            const keyPressed = event.keyCode;
+            const LEFT_KEY = 37;
+            const RIGHT_KEY = 39;
+            const UP_KEY = 38;
+            const DOWN_KEY = 40;
+
+            const goingUp = dy === -gridSize;
+            const goingDown = dy === gridSize;
+            const goingRight = dx === gridSize;
+            const goingLeft = dx === -gridSize;
+
+            if (keyPressed === LEFT_KEY && !goingRight) {
+                dx = -gridSize;
+                dy = 0;
+            }
+            if (keyPressed === UP_KEY && !goingDown) {
+                dx = 0;
+                dy = -gridSize;
+            }
+            if (keyPressed === RIGHT_KEY && !goingLeft) {
+                dx = gridSize;
+                dy = 0;
+            }
+            if (keyPressed === DOWN_KEY && !goingUp) {
+                dx = 0;
+                dy = gridSize;
+            }
+        }
+
+        startButton.addEventListener('click', initGame);
+        restartButton.addEventListener('click', initGame);
+
+        // 初始显示开始屏幕
+        startScreen.style.display = 'flex';
+    </script>
 </body>
 </html>
