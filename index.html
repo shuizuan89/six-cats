@@ -11,7 +11,7 @@
         /* Custom pixel-style fonts and elements */
         body {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            background-color: #181818; /* Dark background */
+            background-color: #FFA500; /* Bright Orange background */
             color: #f0f0f0; /* Light text */
         }
         h1, h2 {
@@ -30,6 +30,10 @@
         .btn:hover {
             background-color: #0056b3;
         }
+        /* Override Tailwind's default body background to apply our custom orange */
+        .bg-gray-900 {
+            background-color: #FFA500 !important;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 flex flex-col min-h-screen">
@@ -44,32 +48,4 @@
         <section class="mb-8 pixel-border bg-gray-800 rounded-md p-4">
             <h2 class="text-xl font-semibold mb-2">Play Zhandui Online Now</h2>
             <div class="relative w-full aspect-w-16 aspect-h-9 rounded-md overflow-hidden">
-                <iframe class="absolute inset-0 w-full h-full" src="https://html5.gamedistribution.com/rvvASMiM/294ad1ff555140a4b5435c974c2c3644-mobile.html" frameborder="0" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups allow-pointer-lock"></iframe>
-            </div>
-        </section>
-
-        <section class="mb-8 pixel-border bg-gray-800 rounded-md p-4">
-            <h2 class="text-xl font-semibold mb-2">About the Game: Zhandui</h2>
-            <p class="mb-4">Zhandui is an engaging online game designed for quick and enjoyable play sessions. Whether you're on your computer or mobile device, you can jump right into the action without any downloads or installations. Experience fun challenges and exciting gameplay directly in your browser.</p>
-
-            <h2 class="text-xl font-semibold mb-2">Key Features</h2>
-            <ul class="list-disc list-inside mb-4">
-                <li>Instant Play: Access Zhandui directly through your web browser.</li>
-                <li>Cross-Device Compatibility: Enjoy the game on your PC, tablet, or smartphone.</li>
-                <li>Engaging Gameplay: Dive into a world of fun and challenges.</li>
-                <li>Free to Play: Zhandui is completely free to enjoy.</li>
-            </ul>
-
-            <h2 class="text-xl font-semibold mb-2">How to Play</h2>
-            <p class="mb-4">Simply click on the game frame above to start playing Zhandui. The controls are intuitive and designed for a seamless experience. Follow the in-game instructions for guidance on how to play and achieve high scores!</p>
-
-            <h2 class="text-xl font-semibold mb-2">Enjoy Zhandui!</h2>
-            <p>We hope you have a fantastic time playing Zhandui! Share the fun with your friends and come back often for more gaming adventures on zhandui.uk.</p>
-        </section>
-    </main>
-
-    <footer class="bg-gray-800 text-center py-2 text-gray-500 text-sm shadow-inner">
-        <p>&copy; 2023 Zhandui.uk - All Rights Reserved.</p>
-    </footer>
-</body>
-</html>
+                <iframe class="absolute inset-0 w
