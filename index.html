@@ -1,170 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Survivors - Fight Endless Waves of Monsters</title>
-    <meta name="description" content="Survive endless waves of monsters in this action-packed roguelike game. Upgrade your character, collect powerful items, and face increasingly difficult challenges.">
-    <link rel="canonical" href="https://monstersurvivors.com">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        apple: {
-                            blue: '#007AFF',
-                            red: '#FF3B30',
-                            green: '#34C759',
-                            purple: '#AF52DE',
-                            yellow: '#FFCC00',
-                            orange: '#FF9500',
-                            dark: '#1C1C1E',
-                            gray: '#8E8E93',
-                            lightgray: '#F2F2F7'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style type="text/css">
-        @media (max-width: 640px) {
-            .game-container {
-                height: 70vh;
-            }
-        }
-    </style>
-</head>
-<body class="bg-apple-lightgray text-apple-dark">
-    <header class="bg-apple-blue text-white p-4 md:p-6 shadow-md">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="text-center md:text-left mb-4 md:mb-0">
-                    <h1 class="text-3xl md:text-4xl font-bold">Monster Survivors</h1>
-                    <p class="text-lg mt-2">Survive and fight against endless waves of monsters!</p>
-                </div>
-                <nav>
-                    <ul class="flex space-x-4">
-                        <li><a href="#game" class="hover:text-apple-yellow transition-colors">Play Now</a></li>
-                        <li><a href="#about" class="hover:text-apple-yellow transition-colors">About</a></li>
-                        <li><a href="#features" class="hover:text-apple-yellow transition-colors">Features</a></li>
-                        <li><a href="#controls" class="hover:text-apple-yellow transition-colors">Controls</a></li>
-                    </ul>
-                </nav>
-            </div>
+&lt;!DOCTYPE html>
+
+&lt;html lang="en">
+&lt;head>
+&lt;meta charset="UTF-8">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+&lt;title>Play Zhandui - Classic Online Game&lt;/title>
+&lt;meta name="description" content="Dive into Zhandui, a fun and engaging online game. Play now for free on your PC or mobile device!">
+&lt;link rel="canonical" href="https://zhandui.uk/">
+&lt;link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+&lt;style>
+/* Custom pixel-style fonts and elements /
+body {
+font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+background-color: #181818; / Dark background /
+color: #f0f0f0; / Light text /
+}
+h1, h2 {
+color: #5cb85c; / Classic green for headings /
+text-shadow: 1px 1px #000; / Simple shadow for depth /
+}
+.pixel-border {
+border: 2px solid #333;
+box-shadow: 2px 2px #000;
+}
+.btn {
+@apply inline-block px-4 py-2 rounded text-white font-bold cursor-pointer shadow;
+background-color: #007bff; / Classic blue button */
+text-shadow: 1px 1px #000;
+}
+.btn:hover {
+background-color: #0056b3;
+}
+&lt;/style>
+&lt;/head>
+&lt;body class="bg-gray-900 text-gray-100 flex flex-col min-h-screen">
+&lt;header class="bg-gray-800 py-4 shadow-md">
+&lt;div class="container mx-auto px-4">
+&lt;h1 class="text-center text-2xl md:text-3xl font-bold">Zhandui - Online Adventure&lt;/h1>
+&lt;p class="text-center text-sm text-gray-400 mt-1">Experience the thrill of Zhandui, a captivating online game you can play instantly!&lt;/p>
+&lt;/div>
+&lt;/header>
+
+<main class="container mx-auto px-4 py-8 flex-grow">
+    <section class="mb-8 pixel-border bg-gray-800 rounded-md p-4">
+        <h2 class="text-xl font-semibold mb-2">Play Zhandui Online Now</h2>
+        <div class="relative w-full aspect-w-16 aspect-h-9 rounded-md overflow-hidden">
+            <iframe class="absolute inset-0 w-full h-full" src="[https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html](https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html)" frameborder="0" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups allow-pointer-lock"></iframe>
         </div>
-    </header>
+    </section>
 
-    <main class="container mx-auto p-4 md:p-6">
-        <section id="game" class="my-8">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-apple-blue">Play Monster Survivors</h2>
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="game-container w-full h-screen max-h-[600px]">
-                    <iframe src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html" 
-                            class="w-full h-full border-0" 
-                            allowfullscreen></iframe>
-                </div>
-            </div>
-        </section>
+    <section class="mb-8 pixel-border bg-gray-800 rounded-md p-4">
+        <h2 class="text-xl font-semibold mb-2">About the Game: Zhandui</h2>
+        <p class="mb-4">Zhandui is an engaging online game designed for quick and enjoyable play sessions. Whether you're on your computer or mobile device, you can jump right into the action without any downloads or installations. Experience fun challenges and exciting gameplay directly in your browser.</p>
 
-        <section id="about" class="my-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-apple-blue">About Monster Survivors</h2>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <p class="mb-4">Monster Survivors is an action-packed roguelike survival game where you must fight against endless waves of monsters. Each run is unique, with random enemy spawns, power-ups, and challenges to overcome.</p>
-                <p>Inspired by games like Vampire Survivors, this game combines fast-paced action with strategic character building. How long can you survive as the difficulty continuously increases?</p>
-            </div>
-        </section>
+        <h2 class="text-xl font-semibold mb-2">Key Features</h2>
+        <ul class="list-disc list-inside mb-4">
+            <li>Instant Play: Access Zhandui directly through your web browser.</li>
+            <li>Cross-Device Compatibility: Enjoy the game on your PC, tablet, or smartphone.</li>
+            <li>Engaging Gameplay: Dive into a world of fun and challenges.</li>
+            <li>Free to Play: Zhandui is completely free to enjoy.</li>
+        </ul>
 
-        <section id="features" class="my-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-blue">Game Features</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-orange mb-3">Multiple Characters</h3>
-                    <p>Choose from various characters, each with unique starting weapons and abilities.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-green mb-3">Weapon Evolution</h3>
-                    <p>Combine weapons and passive items to create powerful evolved weapons with special effects.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-purple mb-3">Level Up System</h3>
-                    <p>Gain experience by defeating enemies and level up to choose new weapons or upgrades.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-red mb-3">Boss Battles</h3>
-                    <p>Face off against massive boss monsters that appear at specific time intervals.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-yellow mb-3">Treasure Chests</h3>
-                    <p>Find and open treasure chests to receive random items, gold, or special power-ups.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-blue mb-3">Daily Challenges</h3>
-                    <p>Complete daily challenges to earn rewards and climb the global leaderboard.</p>
-                </div>
-            </div>
-        </section>
+        <h2 class="text-xl font-semibold mb-2">How to Play</h2>
+        <p class="mb-4">Simply click on the game frame above to start playing Zhandui. The controls are intuitive and designed for a seamless experience. Follow the in-game instructions for guidance on how to play and achieve high scores!</p>
 
-        <section id="controls" class="my-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-apple-blue">Game Controls</h2>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-xl font-semibold text-apple-purple mb-3">Keyboard Controls</h3>
-                        <ul class="list-disc pl-5 space-y-2">
-                            <li><span class="font-semibold">WASD or Arrow Keys:</span> Move your character</li>
-                            <li><span class="font-semibold">Space:</span> Pause the game</li>
-                            <li><span class="font-semibold">E or Enter:</span> Select/Confirm</li>
-                            <li><span class="font-semibold">Esc:</span> Back/Menu</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold text-apple-orange mb-3">Mobile Controls</h3>
-                        <ul class="list-disc pl-5 space-y-2">
-                            <li><span class="font-semibold">Virtual Joystick:</span> Appears on the left side of the screen for movement</li>
-                            <li><span class="font-semibold">Tap Buttons:</span> Menu and action buttons on the right side</li>
-                            <li><span class="font-semibold">Swipe:</span> Navigate menus and selection screens</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        <h2 class="text-xl font-semibold mb-2">Enjoy Zhandui!</h2>
+        <p>We hope you have a fantastic time playing Zhandui! Share the fun with your friends and come back often for more gaming adventures on zhandui.uk.</p>
+    </section>
+</main>
 
-    <footer class="bg-apple-dark text-white p-6">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p>&copy; 2025 Monster Survivors. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="#" class="hover:text-apple-blue transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-apple-blue transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-apple-blue transition-colors">Contact</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JSON-LD structured data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "VideoGame",
-        "name": "Monster Survivors",
-        "description": "Survive endless waves of monsters in this action-packed roguelike game. Upgrade your character, collect powerful items, and face increasingly difficult challenges.",
-        "genre": ["Action", "Roguelike", "Survival"],
-        "playMode": "SinglePlayer",
-        "applicationCategory": "Game",
-        "url": "https://monstersurvivors.com",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-        }
-    }
-    </script>
-</body>
-</html>
+<footer class="bg-gray-800 text-center py-2 text-gray-500 text-sm shadow-inner">
+    <p>&copy; 2023 Zhandui.uk - All Rights Reserved.</p>
+</footer>
+&lt;/body>
+&lt;/html>
