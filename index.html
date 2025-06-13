@@ -79,4 +79,268 @@
             gap: 1rem;
             box-shadow: 0 4px 6px var(--shadow-color);
             border: 1px solid var(--border-color);
-            transition: transform 0.2s ease-in
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px var(--shadow-color);
+        }
+
+        .card img {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--desc-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 4px;
+        }
+        
+        #theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        #theme-toggle::before {
+            content: var(--theme-icon);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>AI开发者工作台</h1>
+            <button id="theme-toggle"></button>
+        </header>
+
+        <main>
+            <section>
+                <h2>核心开发与部署</h2>
+                <div class="grid">
+                    <a href="https://github.com/dashboard" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="GitHub 仪表板">
+                        <div class="card-content">
+                            <span class="card-title">GitHub 仪表板</span>
+                            <p class="card-desc">代码托管与协作中心</p>
+                        </div>
+                    </a>
+                    <a href="https://vercel.com/new?teamSlug=zengshuizuans-projects" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABkElEQVR4nJSTQUsCURDH/65LZV4qRPYDSPoNUhQvnhS9J7XiTRDCSxB06BJ06tapOhbkTchDp6KD5/oAXgSFPEWBghBq/9G34q67UAO/ZXfem//smzejwW7rJEvqpEd+FD3ly6o9C/MtvRvklJhkC+72Re7IBemLw78UfE1KZAPeJmt7ZJe8koEIrJFzFWwzXddnjMdj51JUHeVZ4yNDDtzS5fN5lMtleJjEZKQGD2TfuRoKhdBoNGAYBnK5HNrttptIXf4g5bZSLBaRSCQQiURQqVSgaZrbtpR4DadXgqrVKvz+eY1N00Q8HncTMFZkJZNkjMViC184HEatVkMgEFhREIH+skMylUorF4JCoTArqsP6Oh8tqCL6fD6k02l0u110Oh3bTjlOMplEs9nEaDSy3C25BWnPe7IjAsFg0KtgmE6nGA6HmEwm8vlJDkVAGumSHOF/dkWOpczSZu+Yt2f0j8GP5IR8W7MwwLy315WI1zzIMN2qYNswWSIv5I1IcbfJJpEDf5AnckZuJLMV9AsAAP//L5ZfdwAAAAZJREFUAwClAlg2cosU8gAAAABJRU5ErkJggg==" alt="New Project">
+                        <div class="card-content">
+                            <span class="card-title">Vercel (New Project)</span>
+                            <p class="card-desc">前端应用一键部署平台</p>
+                        </div>
+                    </a>
+                    <a href="https://dash.cloudflare.com/7f1e4f1bd43d68d8bedac3ec8c51c947/zhandui.uk/dns/records" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABRUlEQVR4nNyTP0vDUBTF721fg5ZqG6tDrVabzbiKDjqIiyAUuglFBMFBuvQLiLubIn4AKVh00UWEqLiJS0sLKoRMUv+gLaRGhaQmecaIHVolQxbpDy48Lu+cd96FS8AlBFzyjw0opR3G9VHSqEo8dkXufNzsPrJsrfke/ip+r/Sr2QXBfBZHG81A35N/fmcOo3zhT4N6uTiO2muPkc+mDVFItLwW5qTO9BmPiHqLgS6eJrW95QNwgEltbSITuPQOTh9aRqo9A6oovdrJaspJ7IlPApSPM1S+yejSbonSlxn8iv2RWxRAVYJ2JHYIMDQA4GUArQLis8+eUAzIxBLQah7o/TnQShEgnlgn5sX22o/YTiPf2tWMGebAOzIFZmnDGpby/X9ZHMN6IbdCaw8xp/jgDwKJRMF8e2y0sHv4CsElbbALnwAAAP//nCftiAAAAAZJREFUAwAJgXAC6qxNiQAAAABJRU5ErkJggg==" alt="Cloudflare DNS">
+                        <div class="card-content">
+                            <span class="card-title">Cloudflare DNS</span>
+                            <p class="card-desc">网站安全、性能加速与DNS管理</p>
+                        </div>
+                    </a>
+                    <a href="https://www.cursor.com/en" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACOUlEQVQ4jY2TvUokQRSFv1vd9qD0YCComY5BS0cK+gAGgn+ZT+Ar+AS7L7BPYGiyhiIIBkYzYrCLP5GhImgZ2I4/w6Az3XU3sHroXXZhC4qqupx7qu6pe+BzrACnwCvQBxzgRMT5vfq17zGnPmeQ/FoBqYioP/9tloSvwEoAfAcaQF9ETMlaq9VYWloiiiLa7baoqgKICEAODANpAHwDIsAAAjA3NydbW1uyuLgoT09PMjo6Sr/fl263i8eUF9VDzySAS9OU9fV1mZ2dxRjD29sbYRgyPj7O5OQkj4+PcnNzo9Za9STDVOp229vbent7q+/v7/r8/KxZlqm1Vu/v7/Xu7k6zLNPd3V01xgyEDYCvAGEYSq/X4+TkBBFhfn6eOI6J45h6vU4QBHS7XXZ2djg/PxdfggTAl09tRGdmZiTPc1qtFs1mk7GxMSYmJrDW4pzj6OiIg4MDsizToigE0IHqIoKqYoxhZGSEdrvN8fEx1lrCMOTh4YH9/X3qtRr+QwAIS+UByfOcKIpIkoRGo0EcxxRFQRRFXFxc8PLyUl40yDFeDIqi0OnpaTY2NkiSBFXl4+ODoaEhrLV0Oh02NzeZmprCOVc+QQ1QAKiqtlotPTs7wzlHFEWoKkVRcH19TZ7nXF5e0mw2tUJQiG/JuHwSoGmayurqKgsLCyRJwt7eHoeHh1xdXWmJ8fgOwE8f6FXM4wBdXl52a2tr1VhpsJ7P+fHfZqrEfjNT1ZF/2lmNMc53nfuXnX8B90UsGGJ7SPkAAAAASUVORK5CYII=" alt="Cursor">
+                        <div class="card-content">
+                            <span class="card-title">Cursor</span>
+                            <p class="card-desc">AI-First 代码编辑器</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section>
+                <h2>AI 模型与应用</h2>
+                <div class="grid">
+                     <a href="https://gemini.google.com/u/1/app?pli=1" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB7klEQVR4nJRSS2tTURCec2buw5CICxcuKtiF+OxG/AERd0LFRVKkS0FQhKiRFhTEsxC6UFzkH7gQqkUQ6z4ugosiKGLtQnDjQgSF0pvcm/s60/tqm4YQ0oFzZpjHd87MNxLGyI3FTqWuvpfH5chxQYsOTR8OvBMHB6i/wVQFgq9FJGYHfZMBnPvBCliyEPMB4nzuq/NEAEq1Kbn030drd9CyT8V26fyVpa+3QAkNaWxIxI5W1Taqj5fixOa7zc7VqFx5vUVg9EwCzzQDh6O5zoMzH7Ia1UZQ1SRXsBhGfNxca7gWPtsypOGQYNdA8GxT9IhCj+TCl9vTrX0/ULOrpaPHjkz1KawFln3ds+yZTam1Y0jomii9RLtEOv1Jv1SSXeRvHsByKODtv//8W+71IjkSEkIpICpOLBItClvKTOus7Tgvmtqbwa40H35udA167phIPYSsBTdpwTUo7Elc+HnzeGsUC+kQswm/WLrY8rWuaSQ/JuQYibXEIPTDWlEscjby+e0AcMJAlBrVJPjy6YX3rvYXmSyMTRPDyL+/3ji5WtDIoNJcwYM0Di9DAvwELlc2NjyUwad7p2dAscx2YUhGb+L6WZEm9xFfaQHLuW9l5GM0EmBlLhtzBMa7GLQe9E0GUIhjlH+R+4fH5WwDAAD//2EPVMEAAAAGSURBVAMAC3jEFmDDcpwAAAAASUVORK5CYII=" alt="Google Gemini">
+                        <div class="card-content">
+                            <span class="card-title">Google Gemini</span>
+                            <p class="card-desc">Google 的多模态大语言模型</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/ai-aigc-studio/Viggle-AI-WebUI" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="Viggle AI WebUI">
+                        <div class="card-content">
+                            <span class="card-title">Viggle AI WebUI</span>
+                            <p class="card-desc">让静态角色“活”起来的AI视频模型界面</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/weijunext/smart-excel-ai" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="Smart Excel AI">
+                        <div class="card-content">
+                            <span class="card-title">Smart Excel AI</span>
+                            <p class="card-desc">用自然语言生成Excel公式</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            
+            <section>
+                <h2>SaaS 与项目启动器</h2>
+                <div class="grid">
+                    <a href="https://github.com/ixartz/SaaS-Boilerplate" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="ixartz/SaaS-Boilerplate">
+                        <div class="card-content">
+                            <span class="card-title">ixartz/SaaS-Boilerplate</span>
+                            <p class="card-desc">基于Next.js的全功能SaaS启动模板</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/wasp-lang/open-saas/" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="wasp-lang/open-saas">
+                        <div class="card-content">
+                            <span class="card-title">Wasp-lang/open-saas</span>
+                            <p class="card-desc">基于Wasp框架的SaaS启动模板</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/ocluf/justship" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="ocluf/justship">
+                        <div class="card-content">
+                            <span class="card-title">ocluf/justship</span>
+                            <p class="card-desc">基于Svelte 5的高性能SaaS启动模板</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/JavascriptMick/supanuxt-saas" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="supanuxt-saas">
+                        <div class="card-content">
+                            <span class="card-title">supanuxt-saas</span>
+                            <p class="card-desc">基于Nuxt.js(Vue)和Supabase的SaaS模板</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/weijunext/gapis.money" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="gapis.money">
+                        <div class="card-content">
+                            <span class="card-title">gapis.money</span>
+                            <p class="card-desc">API货币化网关，将API调用商业化</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            
+            <section>
+                <h2>分析与监控</h2>
+                <div class="grid">
+                    <a href="https://search.google.com/search-console/welcome" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACdElEQVR4nKRSvU8UQRR/bz527zjuwh4cGCOQEBIEQpSESwwVthZWVlfY0CsJ8W/QWOm15kJCQSysLLSQRCqDMeHjPFajMRcLUdCcx32yO7Mzzq5hVUp5yWTe7rz3+72PH4MzGoMz2mkANEeHzuLiYrbRaEQ/M5kMlEql2umY0MiJo7WOH5aWllZ8398ihLwJT+gvLy/f/RMaxcZoMerq6m6qKavZr9WdXUVTCx5LHjEhNUXRR1T7pTM0cVmlp2p3bl5qn+RgiGZMl8vlQjaTeBhIjwuhkokEa5l6tBABKK1QCJnmnHYotcWPlnd7bnZ2LcoN6V3XvZZIJJ9u7dv0ewuBoQKhKQQKIAh01JnWynwTGOxVkL/QDlrNxvV8Pv8sGqJFxHxbDVD3gHmUESuXUrCyacNRG4EYMEQCIZUvAdJJ5a8VAptAbd6k/gZI9DrdbLpHT44wYqhMkoZbVwmGSbadBClNGyrQjFumFY9knYymutuN15hKO9iXSeGNOY8fftnXnW4Xz58bAqt3AF5tPIepqWnoGxzC7dcbevbKAlfKgkAKjNcopR8OE3xBxUHdw2+1LtQ9Ch8/VeHeg0ewufMBqp8P4X6xhOWKK8L5S9/HuAIkJNo/iRajzMQUWqab5tFP8I87UNndhnd7b+G409Lv3QpMXpwAxpiOASIQRBEe27aiiYeSmpmZgbGxMXixvh7FDA8PQ39/v1BKwT9KNMTcXJxS2jM6MsrHx8e5ZVucMc6LxSLP5XLccRxeKBS4AegxTxwp8rgCi7HHRq7SyFZX3D2U0jAYFsuyYHp60mghACFEdNfrdV2r1dGwPflbyv9tvwAAAP//l7zEFgAAAAZJREFUAwDM3R7AQI1h3AAAAABJRU5ErkJggg==" alt="Google Search Console">
+                        <div class="card-content">
+                            <span class="card-title">Google Search Console</span>
+                            <p class="card-desc">监控谷歌搜索表现</p>
+                        </div>
+                    </a>
+                    <a href="https://analytics.google.com/analytics/web/provision/#/provision" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB7klEQVR4nJRSv2/TQBS+dz6ffbWjtBQj82MIlTJ0oBNigJG/gIGFuRMLVGLpFsQCSMwIITGwgMqPiRGhTgxdKlgRLRJtkUJARW2d2M7d4/mSuFWTVulJJ5/fve973/vucXbC1Xkb1XdehNHgn48DQsag+KZL8X0pxerEVGUlW4qvjE1AaMSXLKDDPZOzgAdQY4DzYxPYVT3NiSbXBpHlaAxDcyxBIbvcDcpLW9jXQ4KgxPHjZJe7wczf7BQ/eEk81hcxGstw/XYt9kLxQLl8enc3e/RL/lits3io4FCg0Xdchs7imYqY91y4waR4fn5zcoKK6sP5YgSBNUcDzO6kppt07SNe2MuCMACtbVOjFBCQ403mDN4cEDUiOv0ixmOp6RnIjiQw8IYK2wcYuDEMOLKFtTsX5wIlrgqTfJh+vLlBYE4KDqVjTyDaI5YKfi7MXFLKWa74/GmbqU/fFuOoGBqb2k8E1wfCokXCPjPvXTrXqr4z1drTWdXndS9Ts5Td9F0OYNsAMN1Uk73KNuYUQZAlAdf58nZbbygX5L/UfNF/cIUm9X2SmbZ0CAb6VZT8btIAv3MlGNPBbZrr17b4QMr63VotVGIuz5LP555stYrY94WZy4HHJuOHax+tA8+Ym0Znr3c7eiu81fxaxP4DAAD//+PJpxQAAAAGSURBVAMAAfrBwhEGv54AAAAASUVORK5CYII=" alt="Google Analytics">
+                        <div class="card-content">
+                            <span class="card-title">Google Analytics</span>
+                            <p class="card-desc">分析网站用户行为</p>
+                        </div>
+                    </a>
+                    <a href="https://ahrefs.com/keyword-difficulty" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA00lEQVR4nKySvRHCMAyFn7g0dLCBR2AEmABWYAIogSpUhC5MBCOwAR4hdNBgHiEBJ+THh/PudCcn9qcnnQJ4KrAPJoKBo2QF+QF4O/AG5LbqVNVi9y2YPWasM2U6YijGwAlgdrwsOPKxwp8OwqxiroShCdWEJowr80U9QFLbmR1scUcsYQr5fo6aAFavsk7dFMQWx2hpwb6sCNEmJLTPqgZL1AzTBmjkMxBcaPd9blnu3id74FD6p0rnE5oAskHManOm54Kr10BvGHJLJ1WAxtV10RMAAP//vyhdUQAAAAZJREFUAwB9ijQupGlzQQAAAABJRU5ErkJggg==" alt="Ahrefs Keyword Difficulty">
+                        <div class="card-content">
+                            <span class="card-title">Ahrefs Keyword Difficulty</span>
+                            <p class="card-desc">竞品关键词与难度分析</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section>
+                <h2>资源、灵感与阅读</h2>
+                <div class="grid">
+                    <a href="https://theresanaiforthat.com/requests?__cf_chl_rt_tk=dRc0D3x82GhKupJ_HOmRYmsyky2ya70KbiNqRNhe_dE-1749736654-1.0.1.1-Hze.qmbyFmTe7.MN5omzQ04kiDjpJpW9sqweBRH5CyA" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACQElEQVR4nJRTTUhUURQ+576/SSYkVDLHpiGG/pgQJCqUIrVWKUTQ1KJFiyikfZs2E7SOtoMSLSLKamH2Q0gkLRKkxlamDDb9jE7jNNY4+d7M+7m3857TUAtH/eDedzic893vfPddGSqI3xtpBE0Jtu8OdyCDI0LAnWcP776MxWIcaoBVA4md8Pu0YWR4CwCjpbL5/PDxvsSTN+PttQjkvwFHbAhsbWp14/yvAnxOZ9ywjdZVWufWVOBT2TSSbhfz2dwSCHYBQCQA4TWsR0Fx2Tg9MfkByoYxFdgW6Ll89uT3gUcvcjz/dbQWAbpb/MHTLmTsVWTXTlQVeeDAvvAlWCdYZb/mr9tEzQo4go/BBsAGh4bDILC7frN/ZSbGZjZCIHOhnAIUSAq8hGVZ/xUkkskmYUpdHJwwoiSR0WnbtsYOte1JeQTkQocb+DTVa1AVNUSf9+OTH0OKT73BLYjSAQp60woSCyApCk9Mfbqtcv2KTKntiAiSJHkEjoBgYma2h3N4TPX1qyhnHMRFk9V9YURYhsr9u0ilUt3cgfs1mldGtW34ll3olYHhO8FFp2nZJF+G6eRs745gsKroX3CSVVzWYbGwBD8LRXekRRltHieS/t+6rjpk4Nx8BjILP0DTNK/BdhwwKU9vA4ySK7aqVidbrns/0uDQyMFcPn9zLp3udP2I7KcngLi6foQkF/x8f7Rvolp1JhZTG0twtKW5xdccaD1GB+0VKBrohhkZbRBhlsqSIPjbLRAajUYjptv3BwAA//8y6Oy3AAAABklEQVQDAIi85tGrO0TmAAAAAElFTkSuQmCC" alt="TheresAnAIForThat">
+                        <div class="card-content">
+                            <span class="card-title">TheresAnAIForThat</span>
+                            <p class="card-desc">最全的AI工具发现目录</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/dubinc/oss-gallery?ref=ossgallery" class="card" target="_blank">
+                        <img src="https://www.google.com/s2/favicons?domain=github.com" alt="OSS Gallery">
+                        <div class="card-content">
+                            <span class="card-title">OSS Gallery by Dub.co</span>
+                            <p class="card-desc">精选优秀开源项目画廊</p>
+                        </div>
+                    </a>
+                     <a href="https://www.500mrr.com/" class="card" target="_blank">
+                        <img src="https://www.google.com/s2/favicons?domain=www.500mrr.com" alt="500MRR">
+                        <div class="card-content">
+                            <span class="card-title">500MRR</span>
+                            <p class="card-desc">AI分析Hacker News上的成功副业案例</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/daimajia/huntscreens" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="Huntscreens">
+                        <div class="card-content">
+                            <span class="card-title">Huntscreens</span>
+                            <p class="card-desc">聚合Product Hunt等网站的产品截图</p>
+                        </div>
+                    </a>
+                    <a href="https://news.ycombinator.com/item?id=42373343" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABcklEQVR4nKSTP0sDQRDFf3teICYmjahgk0otbLXRShBLEbSIoNj5CcRGENSPYKWdndhEK2uxSGFhoZWBVIqFqCD+Qb3cOZvbw9u4hIALQ3Zn37x58/biR6tE/GN51klTKUl5/u+5mVMmp2ht59vFEu8hBBI95qzjSy4/AsiZigRrKdBdvuV3cgHKmwLMxMBPidIoLO/A4FCMUcoxgk4Gmr0Bs1swvihdDbC8CzPr8PJoKiIHQSiyc1JwXoHrUyHZjoHDYzAyBQcr8PAkyjzLB9tEPZie8XgDekswMQfTa1JYh+qR+KLiRsplojIqumVzcwkXh7C0B/k+2J8XL+QuL/1C+xm8VgFNeV2yOREjC/1QOxOySjxeS3fHCJpAGDIS9zV4voV6Fd40sgvX+kuQVhEG8YelDLHqhCCtpDgA2YIQYb19evnObILVr3F3JcbKPmy4oW3/TK8S8kGSxajoVEFCWZTrKHS6354gAWsT02fH+gEAAP//qHICSwAAAAZJREFUAwC93GjqMBLbtAAAAABJRU5ErkJggg==" alt="Hacker News">
+                        <div class="card-content">
+                            <span class="card-title">Ask HN: $500/month side projects</span>
+                            <p class="card-desc">Hacker News精华帖，独立开发者成功案例</p>
+                        </div>
+                    </a>
+                    <a href="https://scys.com/articleDetail/xq_topic/4848511545851418" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADDUlEQVR4nGxTW0hUURQ9+5xzbzYSpJBED+hxZxIxKgyCPsJ+IqgcRxgMK6esrz4qKAoKoo8Kqp+KIKg0NYtieowzZJSQQhGFQaIEOXPLocjJQKUIfJxX+446SrThcO89Z629z9p3bU5mguLSpHxZnrNsXQ0lqoIwa2H2RIkfmrC4m/5wj3Smx3JYDJhNdiJVFdSm5wHgtxwdfwWcp7IgIQNsrr3JAOSriYmTbmNrYpoDU0mMUxs8wTg7pYw+6N6OtZD/hFMX2sUIXNdKnk01xS96SbI3cCLbKgDs+0qMb/hyt62XlJVZTlERFQusEqZAAh0dZHPmrU/eetS2YldwNbfpOyEmdva3PI2zRTvKfLavMGaUPPa55Wl7tlQmo4ddVy1YW3wBL7pWSGi3LPvUEMxtG3ne8X1+6apvzGLnhpfm10MgEqo1HA6l6h+v9+Ss2LN9KbWsGiK1QWXVuIXN0g1G0z+jPv1w4EZi1JPs31/1Xkt1lStjgkTojimZhlKYxxjfgK2XRukCXDYwdo36bNBjY92I6fGAWqiXmDxIuc0WMmOS03/DbUp87LsZDfU1PA4roVvBtgrxKm+lGN/a3xzvJWHCPCByUh6XG4zJLYxwGEg06r1xZ2/oKGVsH/amPdUUq5j5F2FciEGOx+VGqAxWKM6eRaNmSe32xT5qtWFaP6r4SbQWq+qqNmtG84WQr9ON0V9ZCZoUg1YZasDEKOebp3sA4yoPn2MApAsLoKdoOVA4T4GepkL5c7ZFjgEaA1JenhdYXtAttLzU35Son+1OJxJ8gCm12xyrJiUlFikq0qSzUzqRHfsp8OPJ9MgaRtJpOb804HJuNReUrnw23JPMZJOcIaRwyD9ImO4arqz5ivIkYvXKmm1lzLIeKi33jbS++JSzsn935WHizYE2R5KNT255e/84GQJ1oQOo6oqR4qR7J3E5Z2WsRnHhMFVuYTa/gFSphXhDANzJzhgHq27EjlhKieNuQ+zF7GHK9YVMjijz762qNjjOaKhF3oFScgDNFEe3PvA+Z2HJXwAAAP//Y1BK1gAAAAZJREFUAwBBwmIz7/p+KwAAAABJRU5ErkJggg==" alt="只靠想法就能赚钱">
+                        <div class="card-content">
+                            <span class="card-title">只靠想法就能赚钱的时代到来了！</span>
+                            <p class="card-desc">生财有术精华帖</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
