@@ -1,108 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Play Kick the Pirate Online - Free Fun Game | zhandui.uk</title>
-    <meta name="description" content="Ready for some swashbuckling fun? Play Kick the Pirate online for free! Test your aim and see how far you can launch the pirate in this hilarious physics game.">
-    <meta name="keywords" content="Kick the Pirate, pirate game, online game, free game, physics game, launching game, fun game">
-    
-    <link rel="canonical" href="https://zhandui.uk/">
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏴‍☠️</text></svg>">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <title>AI开发者工作台</title>
     <style>
-        .aspect-ratio-16-9 {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        :root {
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #1a1a1a;
+            --header-color: #0a0a0a;
+            --desc-color: #5c5c5c;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --border-color: #e5e7eb;
+            --theme-icon: '☀️';
         }
-        .aspect-ratio-16-9 iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --header-color: #ffffff;
+            --desc-color: #a0a0a0;
+            --shadow-color: rgba(255, 255, 255, 0.05);
+            --border-color: #333333;
+            --theme-icon: '🌙';
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: var(--header-color);
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        h2 {
+            color: var(--header-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px var(--shadow-color);
+        }
+
+        .card img {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--desc-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 4px;
+        }
+        
+        #theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        #theme-toggle::before {
+            content: var(--theme-icon);
         }
     </style>
-    
 </head>
-<body class="bg-slate-50 font-sans text-slate-700">
-
-    <div class="container mx-auto max-w-5xl p-4 md:p-8">
-        
-        <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-                Kick the Pirate
-            </h1>
-            
-            <p class="mt-3 text-lg md:text-xl text-slate-600">
-                Test your timing and strength to launch the pirate as far as possible in this hilarious physics-based game!
-            </p>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>AI开发者工作台</h1>
+            <button id="theme-toggle"></button>
         </header>
 
-        <main>
-            <section id="game-container" class="mb-12">
-                <div class="aspect-ratio-16-9 bg-black rounded-lg shadow-2xl overflow-hidden border-2 border-slate-200">
-                    <iframe 
-                        src="https://cloud.onlinegames.io/games/2022/construct/92/kick-the-pirate/index-og.html" 
-                        frameborder="0" 
-                        scrolling="no" 
-                        allowfullscreen
-                        title="Kick the Pirate Game">
-                    </iframe>
-                </div>
-            </section>
-
-            <section id="game-details" class="space-y-8">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4">
-                        About The Game
-                    </h2>
-                    <p class="text-base md:text-lg leading-relaxed">
-                        Welcome aboard, captain! You've caught a pesky pirate, and it's time to teach him a lesson. The goal of "Kick the Pirate" is simple and satisfying: use your trusty cannon to launch the pirate across the high seas. Your score is determined by the distance he flies. It's a game of precision, power, and a little bit of luck. Perfect your launch to set new records!
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4">
-                        How to Play
-                    </h2>
-                    <p class="text-base md:text-lg leading-relaxed">
-                        The controls are incredibly easy to learn, making it fun for everyone.
-                    </p>
-                    <ol class="list-decimal list-inside mt-4 space-y-2 text-base md:text-lg">
-                        <li><strong>Aim:</strong> Click or tap the screen once to set the angle of the cannon.</li>
-                        <li><strong>Power:</strong> Watch the power meter. Click or tap a second time to set the launch power.</li>
-                        <li><strong>Launch:</strong> Watch the pirate fly! Your distance will be recorded at the end.</li>
-                    </ol>
-                </div>
-                
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4">
-                        Key Features
-                    </h2>
-                    <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
-                        <li><strong>Simple One-Click Controls:</strong> Easy to pick up and play instantly.</li>
-                        <li><strong>Addictive Physics Gameplay:</strong> Every launch is different and challenging.</li>
-                        <li><strong>Funny Animations & Sound:</strong> Enjoy the comical antics of the flying pirate.</li>
-                        <li><strong>High Score Tracking:</strong> Compete against yourself and aim for the perfect launch.</li>
-                        <li><strong>No Installation Needed:</strong> Play directly in your browser on any device.</li>
-                    </ul>
-                </div>
-            </section>
-        </main>
-
-        <footer class="text-center mt-12 pt-8 border-t border-slate-200">
-            <p class="text-sm text-slate-500">
-                &copy; 2025 zhandui.uk | All Rights Reserved. Have fun playing Kick the Pirate!
-            </p>
-        </footer>
-
-    </div>
-
-</body>
-</html>
+        <section>
+            <h2>核心开发与部署</h2>
+            <div class="grid">
+                <a href="https://github.com/dashboard" class="card" target="_blank">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="GitHub 仪表板">
+                    <div class="card-content">
+                        <span class="card-title">GitHub 仪表板</span>
+                        <p class="card-desc">代码托管与协作中心</p>
+                    </div>
+                </a>
+                <a href="https://vercel.com/new?teamSlug=zengshuizuans-projects" class="card" target="_blank">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABkElEQVR4nJSTQUsCURDH/65LZV4qRPYDSPoNUhQvnhS9J7XiTRDCSxB06BJ06
