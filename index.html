@@ -12,7 +12,7 @@
             --text-color: #1a1a1a;
             --header-color: #0a0a0a;
             --desc-color: #5c5c5c;
-            --quote-color: #4a4a4a;
+            --quote-color: #e44d26; /* Changed quote color for emphasis */
             --shadow-color: rgba(0, 0, 0, 0.05);
             --border-color: #e5e7eb;
             --theme-icon: '☀️';
@@ -24,7 +24,7 @@
             --text-color: #e0e0e0;
             --header-color: #ffffff;
             --desc-color: #a0a0a0;
-            --quote-color: #b0b0b0;
+            --quote-color: #f16529; /* Changed quote color for emphasis */
             --shadow-color: rgba(255, 255, 255, 0.05);
             --border-color: #333333;
             --theme-icon: '🌙';
@@ -72,39 +72,22 @@
             margin-bottom: 1rem;
         }
 
+        /* New styles for the top section */
         .top-section {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
             background-color: var(--card-bg);
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             margin-bottom: 2rem;
         }
-
-        .quote-container, .levels-container {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .quote-container blockquote {
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--quote-color);
-            border-left: 4px solid var(--border-color);
-            padding-left: 1.5rem;
-            margin: 0;
-        }
         
-        .quote-container footer {
-            text-align: right;
-            margin-top: 1rem;
-            font-size: 1rem;
-            color: var(--desc-color);
+        .levels-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
 
-        .levels-container h3 {
+        .levels-column h3 {
             margin-top: 0;
             margin-bottom: 1rem;
             font-size: 1.2rem;
@@ -115,9 +98,22 @@
             color: var(--text-color);
         }
         .levels-list dd {
-            margin-left: 1.5rem;
-            margin-bottom: 0.5rem;
+            margin-left: 0;
+            padding-left: 1rem;
+            margin-bottom: 0.75rem;
             color: var(--desc-color);
+            font-size: 0.9rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .quote-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--quote-color);
+            border-top: 1px solid var(--border-color);
         }
 
         .section-description {
@@ -199,6 +195,22 @@
         #theme-toggle::before {
             content: var(--theme-icon);
         }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .levels-grid {
+                grid-template-columns: 1fr;
+                gap: 0 2rem;
+            }
+            .top-section {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -209,28 +221,30 @@
         </header>
 
         <section class="top-section">
-            <div class="quote-container">
-                <blockquote>
-                    代码构建世界，<br>灵感点亮未来。
-                </blockquote>
-                <footer>—致每一位AI时代的建设者</footer>
+            <div class="levels-grid">
+                <div class="levels-column">
+                    <dl class="levels-list">
+                        <dt>幼儿园:</dt> <dd>会上站流程,平台域名 | 本期航海手册+视频</dd>
+                        <dt>小学:</dt> <dd>熟悉流程,学代码 | 往期航海手册+往期直播</dd>
+                        <dt>初中:</dt> <dd>注册订阅 | 生财小组精华帖内容</dd>
+                        <dt>高中:</dt> <dd>做内页,发外链 | 挖掘面包屑</dd>
+                        <dt>大学:</dt> <dd>投广告,网红营销 | 测试+SOP+复盘</dd>
+                        <dt>研究生:</dt> <dd>ALL IN ONE | 竞品研究,学榜单</dd>
+                    </dl>
+                </div>
+                <div class="levels-column">
+                    <dl class="levels-list">
+                        <dt>博士:</dt> <dd>招助理 | 花钱买时间</dd>
+                        <dt>博士后:</dt> <dd>搭团队 | SOP落地复刻</dd>
+                        <dt>副教授:</dt> <dd>十人 | 矩阵产品</dd>
+                        <dt>教授:</dt> <dd>三十人以上 | 产品线+生态链</dd>
+                        <dt>院士:</dt> <dd>一个人完成</dd>
+                    </dl>
+                </div>
             </div>
-            <div class="levels-container">
-                <h3>生财有术 · 开发者级别</h3>
-                <dl class="levels-list">
-                    <dt>幼儿园 (月入100万):</dt> <dd>会上站流程,平台域名 | 本期航海手册+视频 </dd>
-                    <dt>小学 (月入1K刀):</dt> <dd>熟悉流程,学代码 | 往期航海手册+往期直播 </dd>
-                    <dt>初中 (月入五千刀):</dt> <dd>注册订阅 | 生财小组精华帖内容 </dd>
-                    <dt>高中 (月入万刀):</dt> <dd>做内页,发外链 | 挖掘面包屑 </dd>
-                    <dt>大学 (日入千刀):</dt> <dd>投广告,网红营销 | 测试+SOP+复盘 </dd>
-                    <dt>研究生 (日入三千刀):</dt> <dd>ALL IN ONE | 竞品研究,学榜单 </dd>
-                    <dt>博士 (月入八万刀):</dt> <dd>招助理 | 花钱买时间 </dd>
-                    <dt>博士后 (月入十万刀):</dt> <dd>搭团队 | SOP落地复刻 </dd>
-                    <dt>副教授 (日入万刀):</dt> <dd>十人 | 矩阵产品 </dd>
-                    <dt>教授 (日入万刀):</dt> <dd>三十人以上 | 产品线+生态链 </dd>
-                    <dt>院士 (日入万刀):</dt> <dd>一个人完成 </dd>
-                </dl>
-            </div>
+            <footer class="quote-footer">
+                与其看别人搞钱，不如自己搞钱，一天不建设，就是在丢钱。
+            </footer>
         </section>
 
         <main>
@@ -440,7 +454,7 @@
                         </div>
                     </a>
                     <a href="https://github.com/ixartz/Next-JS-Landing-Page-Starter-Template" class="card" target="_blank">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="ixartz/...Landing-Page-Template">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="ixartz/...Landing-Page-Starter-Template">
                         <div class="card-content">
                             <span class="card-title">ixartz/...Landing-Page-Starter-Template</span>
                             <p class="card-desc">轻量级营销落地页模板。</p>
@@ -509,32 +523,35 @@
                             <p class="card-desc">AI智能绿幕，自动为视频抠像。</p>
                         </div>
                     </a>
-                    <a href="https://github.com/wasp-lang/open-saas/" class="card" target="_blank">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="wasp-lang/open-saas">
+                </div>
+                <h3>导航站类</h3>
+                <div class="grid">
+                    <a href="https://github.com/fre123-com/fre123-nav/" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="fre123-com/fre123-nav">
                         <div class="card-content">
-                            <span class="card-title">wasp-lang/open-saas</span>
-                            <p class="card-desc">基于Wasp框架的SaaS启动模板。</p>
+                            <span class="card-title">fre123-nav</span>
+                            <p class="card-desc">强大的动态导航网站应用框架。</p>
                         </div>
                     </a>
-                    <a href="https://github.com/ocluf/justship" class="card" target="_blank">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="ocluf/justship">
+                    <a href="https://github.com/WebStackPage/WebStackPage.github.io" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="WebStackPage.github.io">
                         <div class="card-content">
-                            <span class="card-title">ocluf/justship</span>
-                            <p class="card-desc">基于Svelte 5的高性能SaaS启动模板。</p>
+                            <span class="card-title">WebStackPage</span>
+                            <p class="card-desc">经典的静态网址导航页模板。</p>
                         </div>
                     </a>
-                    <a href="https://github.com/JavascriptMick/supanuxt-saas" class="card" target="_blank">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="JavascriptMick/supanuxt-saas">
+                    <a href="https://github.com/dubinc/oss-gallery?ref=ossgallery" class="card" target="_blank">
+                        <img src="https://www.google.com/s2/favicons?domain=github.com" alt="dubinc/oss-gallery">
                         <div class="card-content">
-                            <span class="card-title">JavascriptMick/supanuxt-saas</span>
-                            <p class="card-desc">基于Nuxt.js(Vue)和Supabase的SaaS模板。</p>
+                            <span class="card-title">dubinc/oss-gallery</span>
+                            <p class="card-desc">Dub.co官方的开源项目展示画廊。</p>
                         </div>
                     </a>
-                    <a href="https://github.com/saasfly/saasfly" class="card" target="_blank">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="saasfly">
+                    <a href="https://github.com/6677-ai/tap4-ai-webui" class="card" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACqElEQVR4nGxTz0tUURQ+98ebN/5gZGa0CaE0e/4qJGijgS3aRxCtWuQialMUuAmUglbRogiyjKx/ICiKtkZhrQyKJCufxugkKpaTk1Tqm3vu9dw3IzMMXmbgvPPO953vfPc8CYXD6G9s0OR1HBHCOccBjlFiN6UZA7akgb3WWj2am/k6DmWHlcVOS0fXTUpcYJxHwRj6mZCUMcvBwGizTqmhtP95gNJ6m4CaeQSOPpXSOa415Qu4Mv7SMxcclMo/S09NnqYECvu2pb3xdiQS6VNKvUKDV6ldPWesQRu9RNAcCXBIzzgqHCDy6kjEPRGL17ur2Z+jrNnr7BFSjgnpCJUPHqb9yYtEKtvaDqWC4E/W9kXXTcz7/gqFQUt71x3pOJcQ85sqj72SC3GeZo4YjVawoiKrCqenJxbK/FksziPICUVjCsZ4Nef6LCmFo9YtTQZt5NV9Cy4Wsx3MRgX5YdD412JotF5ugDWGFoP5tZCemi0W6jLntl0MnzO+/4OCRYsg3D5u2U3B9ppEwquq6Fx5WCqVilJxzITrAcKOkLF4kpOsTTrdxU5yhxFszrh1yR4C7SruSIYD6nfAQyH/HCkfN7W2dkLBzMoR1F7vwEFHiKGQkViI4y1r8joPSyk/aGPuUm4P3cpJrfGFRn19dvrLhC0OgY68QoBTVFNjyazviNjNM9+/fTQGH0ghLgdBcEOjukX9av9vqrVS+2CDZuizYBK+Tk2kAX2PvotPVjtPY9BP9zjmRt0ntH3vKR5czvjbNwLzSi2QwmUbCyGqUKmXabU5aLFlRjVH97fHRrjkZ0g+ZDfW4rm5uZx9k/C8WFxW0UpzpPFGaFv7KR2EhCWXc2o1u/y8rr7hDbmzsoTBKORy1kxY/52AeNJxUZlrszOTw1BaNtgCAAD//2yGulAAAAAGSURBVAMAJsVHc9JrNmMAAAAASUVORK5CYII=" alt="tap4-ai-webui">
                         <div class="card-content">
-                            <span class="card-title">saasfly</span>
-                            <p class="card-desc">企业级的Next.js SaaS启动模板。</p>
+                            <span class="card-title">tap4-ai-webui</span>
+                            <p class="card-desc">用于自建AI工具导航站的模板。</p>
                         </div>
                     </a>
                 </div>
@@ -548,48 +565,56 @@
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACFUlEQVR4nJRTT6jhURT+TLzFo8Yrf8JCidnMxpRSSsOCjY3Vm7IZiY2dYsNCShbGRpHd5BVqVixmYaWUzdhZzCysWFBYoLBgYc65oeeNN/W+Or977v3d+93v/LnS4/EoB/CZ7AOZnuw92cPJV2+3W+Vut3tYrVYynU43USgUKYlE8oQTpGTfW63W42AwwHQ6xXK5FCMdFBvkcjnu7++hVCp53ZBMJqt06Vf69YWIFhKazLRarcZmsyGdTkOj0cBgMEAmk+ElRqMRYrEYrFYrEonElogfLwTz+RzBYBAejwckVyhYLBYg+Rd/v99jPB5jOBzC7Xaj0+n8lj6/oVqtisMWiwV3d3cwGo1CCSviEM7GhE6nk4+opS9lNpvNi8+50Ov1wm80Gmi321CpVAiHw5c973ADmUxGKOCbi8WiWDObzSiXy4hGo1d7r3LAoLkYaU3EzOj1eqIadrsds9lMhGAymdif31RwRjabFTkJhUIimbfwXwKXy4VIJIJ+v49cLvd2AkY+nxdVqdfrrxL84ca4BZbPZSuVSngNTJDhWJ93XqFQgN/vF6VjeL1e1Go1xOPxfwgk/KHMf6MY46lUCpvN5koB2+FwwGQywXq9FnOuWKVSEVU4E/CL/OXz+T52u92rG7gfuJm4jGq1+jJ3OBwIBAI/JeeNRGKh4Qc9mE/0SLY031IvrGjtQMZPc3Hy2SYne/oLAAD//1lXBfEAAAAGSURBVAMA2eP4EmlG6XkAAAAASUVORK5CYII=" alt="Reddit 子社区">
                         <div class="card-content">
                             <span class="card-title">Reddit 子社区</span>
+                            <p class="card-desc">精选的Reddit高质量社区列表。</p>
                         </div>
                     </a>
                     <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-cn" class="card" target="_blank">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC20lEQVR4nGxTW0tVQRRea2bOPvukZnQ10y5QmSndqEiK7mE3Ah9868GHoIegDCqJKAgLSuqpl3oJwR4i/0BQoZURSkQGJRriMfVB89LJyzl7n5lZrfGGSQvW3mtmvu+bNWvWKJg2IhKIaKfjw6D1Pku00Y15oQOUes/rDfOxOHeC/9t4cJf9OAghYK4RGf6+BMQbjG1lLP+QcCZgO8igFwxYRow0fT2aBvoRjAHMySGZt0bhlNQAezlz3k1ypzNYzf6RJ3Pt+Fh64tlTFTQ1oOnpJjAaRG4eeiX7KfPcBS0ysyJM6WUvYXzvTJrXHJlSOj1WU62Sz2sBUimKHjiC6mApmj9jZIZHwAqlDIFmfB57lSMq3nkVWHuShKD01zoRfmpEWbAVMiuvgLepaEq+px0hfy0HUXc4BSBdAU8wdyUPdCEItRpJg4zViwVlcRLbH6Aja63hc5zARgsAOi0Eoabl2QiFuZPFd4qbWQAz3U1RethQakj4xREhipcBcfEYD5V1KRidGIdYVEBgEI8WefbhWeKjS2kMLmQBCN11kswQCj0xMhGSGQ9w6WIJyCJluxRoG4FE0kJTu6UlWW53CcQU5gUiDE23tWYQWSCeccBeHtqI99vfQqADiHkeXD0dg+tnfMjJ8iFIE25Y6YhIluCXlNClop73XZNpFkSnRP4l0/djGL/EX8NYagiO5O9F3gqaejuo+dse2JRbDKVbPNdQCiy1oBJtk32QTCYPRaPRN66jWgfbzJ2Wx7JjpAtG9QTvRJARkViUvQNu77xlCnN8yf1DQRAcjsVijbOdaIyp4u695wRHw3H96ucH6PgdR20NFCxaR8fWlsAiL9vVzN1OVSQSqZnbiZMiYRheRCmqlZAL4T9mLCQQ7E0p5aPZtzAflEgk1vsL/PMCxW5Of/n0axzgWjRzlk983++ci8d/H9yUqovLy8tlbW3tChdXVFT019fXm/kYZ38BAAD//xuC+0wAAAAGSURBVAMANxtxZcAROocAAAAASUVORK5CYII=" alt="Google 搜索中心">
                         <div class="card-content">
                             <span class="card-title">创建实用、可靠、以用户为中心的内容</span>
+                            <p class="card-desc">Google官方的SEO内容创作指南。</p>
                         </div>
                     </a>
                     <a href="https://ahrefs.com/websites#trending" class="card" target="_blank">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA00lEQVR4nKySvRHCMAyFn7g0dLCBR2AEmABWYAIogSpUhC5MBCOwAR4hdNBgHiEBJ+THh/PudCcn9qcnnQJ4KrAPJoKBo2QF+QF4O/AG5LbqVNVi9y2YPWasM2U6YijGwAlgdrwsOPKxwp8OwqxiroShCdWEJowr80U9QFLbmR1scUcsYQr5fo6aAFavsk7dFMQWx2hpwb6sCNEmJLTPqgZL1AzTBmjkMxBcaPd9blnu3id74FD6p0rnE5oAskHManOm54Kr10BvGHJLJ1WAxtV10RMAAP//vyhdUQAAAAZJREFUAwB9ijQupGlzQQAAAABJRU5ErkJggg==" alt="Ahrefs Trending">
                         <div class="card-content">
-                            <span class="card-title">Top Websites Ranking in the World</span>
+                            <span class="card-title">Top Websites Ranking</span>
+                            <p class="card-desc">Ahrefs提供的全球网站流量趋势排名。</p>
                         </div>
                     </a>
                     <a href="https://docs.google.com/spreadsheets/d/1QOdqq9KbjQj1JZO43vc1pir2rnEEsMUXzTDATrOCn2k/edit?gid=0#gid=0" class="card" target="_blank">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAg0lEQVR4nOSTwQmAMAxFf6UDOIJL6CIKHp3BDeoGXaPgJi7hCJ3AaIRCKYIGexB8l4aGfJIfohvXDhvBAighQAGrUjCaCEZazBBQHbVWc5Aml34+39p1dzqlxkvyCYS2Y67+AmG8fB3EhglMxIdM/LmAR3JMT9bH8EUWimjkAHI8iKYdAAD//4QIUiIAAAAGSURBVAMAVAIjDTGRLCkAAAAASUVORK5CYII=" alt="AI Short Video Market Overview">
                         <div class="card-content">
-                            <span class="card-title">[PUBLIC] - AI Short Video Market Overview</span>
+                            <span class="card-title">AI Short Video Market Overview</span>
+                            <p class="card-desc">关于AI短视频市场的分析报告表格。</p>
                         </div>
                     </a>
                     <a href="https://docs.google.com/spreadsheets/d/1eUni44pIURML2VWFFXKzNmm-WKuuam9_ynr5Fo_Q74M/edit?gid=83151001#gid=83151001" class="card" target="_blank">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAg0lEQVR4nOSTwQmAMAxFf6UDOIJL6CIKHp3BDeoGXaPgJi7hCJ3AaIRCKYIGexB8l4aGfJIfohvXDhvBAighQAGrUjCaCEZazBBQHbVWc5Aml34+39p1dzqlxkvyCYS2Y67+AmG8fB3EhglMxIdM/LmAR3JMT9bH8EUWimjkAHI8iKYdAAD//4QIUiIAAAAGSURBVAMAVAIjDTGRLCkAAAAASUVORK5CYII=" alt="Starter Story Premium Solopreneur Report">
                         <div class="card-content">
-                            <span class="card-title">Starter Story Premium Solopreneur Report 2.0</span>
+                            <span class="card-title">Starter Story Solopreneur Report</span>
+                            <p class="card-desc">独立创业者(Solopreneur)成功故事报告。</p>
                         </div>
                     </a>
                     <a href="https://mashable.com/" class="card" target="_blank">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABe0lEQVQ4jY3Tu2pWURAF4O/8FzUaA5p4wVgIPoEQrBQh2FoJdnZapdDazs4nsPIBNGiT3sZLp6m8gQRCqmjEGMSof37PsXBt3KTKhsNs5sysmVmzNv9Oz/9zD7O5D/P1qrghBlW8fuwUHqPDKXs8A/zBWTzEHL7Hdwi3UvEFnmIeFzHCfWzBJaym8hjbmMHJ+Doso8GrynemdPE7jhFa/AjA8VQYpauF2J34TxeALi23uW9jOiBjvME6fsW+jX+2sNpVtgA2sS3eYSl8LQWgFNNLsF22q1Z2FIvZ1iKOxN9X7bPbVbmfee/iI57jduwJvMS3wkFbtdsmcc86qBXYpoMDIUm0MIGDaXsqOdP5PzNI0rga5w4+Z88LWMtGNpO4mREPY73JnoeZ6WbkPIfr+JrgNjFFM8fCw6NC2gquRXFXcBlfqoe0k05HIfEJnqHp4wKu4gNu4Dw2kjgZUifwMyt8gNdFOw32BXkS5/A+Mt3IzFuJ2Y9PFXgLfwGLh2+80Pn96wAAAABJRU5ErkJggg==" alt="Mashable">
                         <div class="card-content">
                             <span class="card-title">Mashable</span>
+                            <p class="card-desc">知名的科技、娱乐、文化资讯网站。</p>
                         </div>
                     </a>
                     <a href="https://mp.weixin.qq.com/s/119PotnvIrkE-icPZhue1w" class="card" target="_blank">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACaElEQVR4nHxTMWsUURCemdvcGaOCKbzLieCPUGNhI6YKCGqSwtomdqJYiZDONIqNxMo2oBEFIRCJSDo1aW0EQYvkbjXGEDXn3u7O+M27vdzZZJa3+97MfDPfzOwT6soMCfXLW4qqS9UhX77/z9bny+Ft+DLekPqr+iVTG6fMTsFwrHD7RhGvsfDixsWNl/0YDtFmSKvz1dHSQX5IwmdD/Dw49dKUsNSXvct37UZ8NX7v2MDg+LPqBavICzgettxIKkLWMgITDXjBM8ikiRKX2AP/4kQvr0/Fb7g+P3zCyuUPqLIG34wzWgN0mUiuk9hwYKC8hdccOI9ZRCgN3hk1ud0+I1Qu35YDUqOUEo44QrrZxkR8F2xeSxmpsXzf0cls8IFvwADLI89rn1HfSdSsPMAlS22V2JbZZNrEjoYSlH8a62O0bAw+py3VnEoswHzh+sJIy9gqe2MpM3MF7f0TemBFD5iHoEuga5v1RsiJINtWMVWMhBkOue1o6mA/Bx32QQebn8N8gIF2W4x5xbPioIjv0aHD1B3oLtQJ5Lpgcx18A1OmFSFNH1BCfzEeN2qRgQuK3A3kx2Kfo5HsjVRK70tjcnNN1W6i215pYAKC2s1egJ009JaKSIQJlIC51Zz4sep/oTQnm3O6m02DRYq0ggwhWJdBkAHoDvEAJvY9+51fa15pPvKSPECg14raSzBWEGAH3fgEbRLyd1i0LLOP2qJ7+baOxpPxk+JCaYSN3wcdpMFz6PJC2s7ubB7Z/FpLaiMIVENexRM3hhvrdB7/X/c2zpD2bqPLIrKPo537yVNwnAKQ964Z/QMAAP//Ip5aCQAAAAZJREFUAwCLQkKHTrc4/gAAAABJRU5ErkJggg==" alt="如何找到1000个小思路">
                         <div class="card-content">
                             <span class="card-title">如何找到1000个小思路？</span>
+                            <p class="card-desc">关于寻找产品灵感的微信公众号文章。</p>
                         </div>
                     </a>
                     <a href="https://mp.weixin.qq.com/s/cXa6Rwiet5gN8bSe-h4QNw" class="card" target="_blank">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACaElEQVR4nHxTMWsUURCemdvcGaOCKbzLieCPUGNhI6YKCGqSwtomdqJYiZDONIqNxMo2oBEFIRCJSDo1aW0EQYvkbjXGEDXn3u7O+M27vdzZZJa3+97MfDPfzOwT6soMCfXLW4qqS9UhX77/z9bny+Ft+DLekPqr+iVTG6fMTsFwrHD7RhGvsfDixsWNl/0YDtFmSKvz1dHSQX5IwmdD/Dw49dKUsNSXvct37UZ8NX7v2MDg+LPqBavICzgettxIKkLWMgITDXjBM8ikiRKX2AP/4kQvr0/Fb7g+P3zCyuUPqLIG34wzWgN0mUiuk9hwYKC8hdccOI9ZRCgN3hk1ud0+I1Qu35YDUqOUEo44QrrZxkR8F2xeSxmpsXzf0cls8IFvwADLI89rn1HfSdSsPMAlS22V2JbZZNrEjoYSlH8a62O0bAw+py3VnEoswHzh+sJIy9gqe2MpM3MF7f0TemBFD5iHoEuga5v1RsiJINtWMVWMhBkOue1o6mA/Bx32QQebn8N8gIF2W4x5xbPioIjv0aHD1B3oLtQJ5Lpgcx18A1OmFSFNH1BCfzEeN2qRgQuK3A3kx2Kfo5HsjVRK70tjcnNN1W6i215pYAKC2s1egJ009JaKSIQJlIC51Zz4sep/oTQnm3O6m02DRYq0ggwhWJdBkAHoDvEAJvY9+51fa15pPvKSPECg14raSzBWEGAH3fgEbRLyd1i0LLOP2qJ7+baOxpPxk+JCaYSN3wcdpMFz6PJC2s7ubB7Z/FpLaiMIVENexRM3hhvrdB7/X/c2zpD2bqPLIrKPo537yVNwnAKQ964Z/QMAAP//Ip5aCQAAAAZJREFUAwCLQkKHTrc4/gAAAABJRU5ErkJggg==" alt="通过Google挖掘细分市场">
                         <div class="card-content">
                             <span class="card-title">通过Google挖掘细分市场的一个案例</span>
+                            <p class="card-desc">关于市场调研的微信公众号文章。</p>
                         </div>
                     </a>
                 </div>
@@ -665,7 +690,7 @@
                         </div>
                     </a>
                     <a href="https://scys.com/articleDetail/xq_topic/218514241452421" class="card" target="_blank">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADDUlEQVR4nGxTW0hUURQ9+5xzbzYSpJBED+hxZxIxKgyCPsJ+IqgcRxgMK6esrz4qKAoKoo8Kqp+KIKg0NYtieowzZJSQQhGFQaIEOXPLocjJQKUIfJxX+446SrThcO89Z629z9p3bU5mguLSpHxZnrNsXQ0lqoIwa2H2RIkfmrC4m/5wj3Smx3JYDJhNdiJVFdSm5wHgtxwdfwWcp7IgIQNsrr3JAOSriYmTbmNrYpoDU0mMUxs8wTg7pYw+6N6OtZD/hFMX2sUIXNdKnk01xS96SbI3cCLbKgDs+0qMb/hyt62XlJVZTlERFQusEqZAAh0dZHPmrU/eetS2YldwNbfpOyEmdva3PI2zRTvKfLavMGaUPPa55Wl7tlQmo4ddVy1YW3wBL7pWSGi3LPvUEMxtG3ne8X1+6apvzGLnhpfm10MgEqo1HA6l6h+v9+Ss2LN9KbWsGiK1QWXVuIXN0g1G0z+jPv1w4EZi1JPs31/1Xkt1lStjgkTojimZhlKYxxjfgK2XRukCXDYwdo36bNBjY92I6fGAWqiXmDxIuc0WMmOS03/DbUp87LsZDfU1PA4roVvBtgrxKm+lGN/a3xzvJWHCPCByUh6XG4zJLYxwGEg06r1xZ2/oKGVsH/amPdUUq5j5F2FciEGOx+VGqAxWKM6eRaNmSe32xT5qtWFaP6r4SbQWq+qqNmtG84WQr9ON0V9ZCZoUg1YZasDEKOebp3sA4yoPn2MApAsLoKdoOVA4T4GepkL5c7ZFjgEaA1JenhdYXtAttLzU35Son+1OJxJ8gCm12xyrJiUlFikq0qSzUzqRHfsp8OPJ9MgaRtJpOb804HJuNReUrnw23JPMZJOcIaRwyD9ImO4arqz5ivIkYvXKmm1lzLIeKi33jbS++JSzsn935WHizYE2R5KNT255e/84GQJ1oQOo6oqR4qR7J3E5Z2WsRnHhMFVuYTa/gFSphXhDANzJzhgHq27EjlhKieNuQ+zF7GHK9YVMjijz762qNjjOaKhF3oFScgDNFEe3PvA+Z2HJXwAAAP//Y1BK1gAAAAZJREFUAwBBwmIz7/p+KwAAAABJRU5ErkJggg==" alt="Google SEO 最关键有效的技巧">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADDUlEQVR4nGxTW0hUURQ9+5xzbzYSpJBED+hxZxIxKgyCPsJ+IqgcRxgMK6esrz4qKAoKoo8Kqp+KIKg0NYtieowzZJSQQhGFQaIEOXPLocjJQKUIfJxX+446SrThcO89Z629z9p3bU5mguLSpHxZnrNsXQ0lqoIwa2H2RIkfmrC4m/5wj3Smx3JYDJhNdiJVFdSm5wHgtxwdfwWcp7IgIQNsrr3JAOSriYmTbmNrYpoDU0mMUxs8wTg7pYw+6N6OtZD/hFMX2sUIXNdKnk01xS96SbI3cCLbKgDs+0qMb/hyt62XlJVZTlERFQusEqZAAh0dZHPmrU/eetS2YldwNbfpOyEmdva3PI2zRTvKfLavMGaUPPa55Wl7tlQmo4ddVy1YW3wBL7pWSGi3LPvUEMxtG3ne8X1+6apvzGLnhpfm10MgEqo1HA6l6h+v9+Ss2LN9KbWsGiK1QWXVuIXN0g1G0z+jPv1w4EZi1JPs31/1Xkt1lStjgkTojimZhlKYxxjfgK2XRukCXDYwdo36bNBjY92I6fGAWqiXmDxIuc0WMmOS03/DbUp87LsZDfU1PA4roVvBtgrxKm+lGN/a3xzvJWHCPCByUh6XG4zJLYxwGEg06r1xZ2/oKGVsH/amPdUUq5j5F2FciEGOx+VGqAxWKM6eRaNmSe32xT5qtWFaP6r4SbQWq+qqNmtG84WQr9ON0V9ZCZoUg1YZasDEKOebp3sA4yoPn2MApAsLoKdoOVA4T4GepkL5c7ZFjgEaA1JenhdYXtAttLzU35Son+1OJxJ8gCm12xyrJiUlFikq0qSzUzqRHfsp8OPJ9MgaRtJpOb804HJuNReUrnw23JPMZJOcIaRwyD9ImO4arqz5ivIkYvXKmm1lzLIeKi33jbS++JSzsn935WHizYE2R5KNT255e/84GQJ1oQOo6oqR4qR7J3E5Z2WsRnHhMFVuYTa/gFSphXhDANzJzhgHq27EjlhKieNuQ+zF7GHK9YVMjijz762qNjjOaKhF3oFScgDNFEe3PvA+Z2HJXwAAAP//Y1BK1gAAAAZJREFUAwBBwmIz7/p+KwAAAABJRU5ErkJggg==" alt="2021 年 Google SEO 最关键有效的技巧· 站内">
                         <div class="card-content">
                             <span class="card-title">2021 年 Google SEO 最关键有效的技巧· 站内</span>
                         </div>
